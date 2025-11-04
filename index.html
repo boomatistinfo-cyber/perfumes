@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privé Parfums | Perfumes Importados de USA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de colores y estilos - Inspirado en Scentbird */
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #e8c4c4;
+            --text-light: #f5f5f5;
+            --text-dark: #333333;
+            --pink-light: #f8e8e8;
+            --transition: all 0.3s ease;
+            --section-padding: 80px 0;
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header y navegación - Estilo Scentbird */
+        header {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-icons i {
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+
+        .nav-icons i:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Hero Section con Video - Estilo Scentbird */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Secciones generales */
+        .section {
+            padding: var(--section-padding);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sección de marcas */
+        .brands {
+            background-color: var(--secondary-color);
+        }
+
+        .brand-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .brand-card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-img-container {
+            height: 250px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        .brand-img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .brand-card:hover .brand-img {
+            transform: scale(1.05);
+        }
+
+        .brand-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .brand-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Sección de productos destacados */
+        .featured {
+            background-color: var(--pink-light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img-container {
+            height: 300px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        .product-img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .product-btn:hover {
+            background-color: #25D366; /* Color WhatsApp */
+            color: var(--secondary-color);
+        }
+
+        /* Sección de venta al detal */
+        .retail {
+            background-color: var(--secondary-color);
+        }
+
+        /* Sección de venta mayorista */
+        .wholesale {
+            background-color: var(--pink-light);
+        }
+
+        .wholesale-info {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Sección de productos complementarios (bolsos) */
+        .accessories {
+            background-color: var(--secondary-color);
+        }
+
+        /* Sección Nosotros */
+        .about {
+            background-color: var(--pink-light);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Sección de Contacto */
+        .contact {
+            background-color: var(--secondary-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-btn {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: var(--text-light);
+            padding: 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #222;
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Botón de WhatsApp GRANDE */
+        .whatsapp-float {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 40px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .whatsapp-float {
+                width: 70px;
+                height: 70px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 35px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de WhatsApp GRANDE -->
+    <a href="https://wa.me/17864676442?text=Hola,%20estoy%20interesado%20en%20sus%20productos%20de%20perfumería" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-container">
+                <!-- Logo temporal - reemplazar con logo real -->
+                <div class="logo-img" style="background-color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-weight: bold;">PP</div>
+                <a href="#home" class="logo">PRIVÉ PARFUMS</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#brands">Marcas</a></li>
+                <li><a href="#retail">Al Detal</a></li>
+                <li><a href="#wholesale">Mayorista</a></li>
+                <li><a href="#accessories">Bolsos</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-user"></i>
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section con Video -->
+    <section id="home" class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="pefume.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <div class="hero-content">
+            <h1>PRIVÉ PARFUMS</h1>
+            <p>Importadores directos de perfumes originales desde Estados Unidos. Descubre la esencia del lujo en cada fragancia.</p>
+            <a href="#brands" class="btn">Explorar Colección</a>
+        </div>
+    </section>
+
+    <!-- Sección de Marcas -->
+    <section id="brands" class="section brands">
+        <div class="container">
+            <h2 class="section-title">Nuestras Marcas Exclusivas</h2>
+            
+            <div class="brand-filters">
+                <button class="filter-btn active" onclick="filterBrands('all')">Todas</button>
+                <button class="filter-btn" onclick="filterBrands('luxury')">Lujo</button>
+                <button class="filter-btn" onclick="filterBrands('designer')">Designer</button>
+                <button class="filter-btn" onclick="filterBrands('niche')">Nicho</button>
+            </div>
+            
+            <div class="brands-grid">
+                <!-- Marcas con las imágenes específicas -->
+                <div class="brand-card" data-category="luxury">
+                    <div class="brand-img-container">
+                        <img src="CHANEL.png" alt="CHANEL" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">CHANEL</h3>
+                        <p class="brand-desc">Elegancia atemporal y sofisticación francesa en cada fragancia.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="luxury">
+                    <div class="brand-img-container">
+                        <img src="DIOR.png" alt="DIOR" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">DIOR</h3>
+                        <p class="brand-desc">Lujo y modernidad en esencias que definen la feminidad contemporánea.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="designer">
+                    <div class="brand-img-container">
+                        <img src="CAROLINA HERRER.png" alt="CAROLINA HERRERA" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">CAROLINA HERRERA</h3>
+                        <p class="brand-desc">Elegancia neoyorquina con un toque de irreverencia glamurosa.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="designer">
+                    <div class="brand-img-container">
+                        <img src="PARADOXE.png" alt="PARADOXE" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">PARADOXE</h3>
+                        <p class="brand-desc">Fragancias que desafían las expectativas con composiciones únicas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="designer">
+                    <div class="brand-img-container">
+                        <img src="VERSACE.png" alt="VERSACE" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">VERSACE</h3>
+                        <p class="brand-desc">Audacia y estilo mediterráneo en fragancias intensas y seductoras.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="designer">
+                    <div class="brand-img-container">
+                        <img src="MOSCHINO TOY BOY.png" alt="MOSCHINO TOY BOY" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">MOSCHINO TOY BOY</h3>
+                        <p class="brand-desc">Irreverencia y humor en fragancias que desafían lo convencional.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="niche">
+                    <div class="brand-img-container">
+                        <img src="ROBANA.png" alt="ROBANA" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">ROBANA</h3>
+                        <p class="brand-desc">Esencias exclusivas con ingredientes raros y composiciones únicas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="designer">
+                    <div class="brand-img-container">
+                        <img src="GABBANA.png" alt="DOLCE & GABBANA" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">DOLCE & GABBANA</h3>
+                        <p class="brand-desc">Pasión mediterránea y sensualidad siciliana en cada esencia.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="niche">
+                    <div class="brand-img-container">
+                        <img src="BHARA.png" alt="BHARARA" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">BHARARA</h3>
+                        <p class="brand-desc">Esencias exclusivas con ingredientes raros y composiciones únicas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="niche">
+                    <div class="brand-img-container">
+                        <img src="ROSES MUSK MONTALE.png" alt="MONTALE" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">MONTALE</h3>
+                        <p class="brand-desc">Lujo oriental con esencias intensas y composiciones audaces.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="niche">
+                    <div class="brand-img-container">
+                        <img src="AFINA.png" alt="AFNAN" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">AFNAN</h3>
+                        <p class="brand-desc">Fragancias orientales de lujo con influencias árabes contemporáneas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="luxury">
+                    <div class="brand-img-container">
+                        <img src="CRYSTALLI NE OMNIA.png" alt="BVLGARI" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">BVLGARI</h3>
+                        <p class="brand-desc">Lujo italiano con esencias mediterráneas y joyas olfativas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="niche">
+                    <div class="brand-img-container">
+                        <img src="TOBACCO.png" alt="TOBACCO" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">TOBACCO</h3>
+                        <p class="brand-desc">Fragancias intensas con notas de tabaco y especias exóticas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+                <div class="brand-card" data-category="niche">
+                    <div class="brand-img-container">
+                        <img src="PERFUMS-2 025102911 85247Z-1-0.png" alt="PERFUMES" class="brand-img">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">COLECCIÓN EXCLUSIVA</h3>
+                        <p class="brand-desc">Selección especial de fragancias únicas y ediciones limitadas.</p>
+                        <a href="#products" class="btn">Ver Productos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section id="products" class="section featured">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="CHANEL.png" alt="CHANEL N°5" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">CHANEL N°5</h3>
+                        <p class="product-desc">La fragancia icónica con notas de jazmín, rosa y aldehídos.</p>
+                        <p class="product-price">$120.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('CHANEL N°5 - $120.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="DIOR.png" alt="DIOR J'adore" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">DIOR J'adore</h3>
+                        <p class="product-desc">Fragancia floral exuberante con notas de rosa, jazmín y ylang-ylang.</p>
+                        <p class="product-price">$105.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('DIOR J\'adore - $105.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="CAROLINA HERRER.png" alt="CAROLINA HERRERA Good Girl" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">CAROLINA HERRERA Good Girl</h3>
+                        <p class="product-desc">Fragancia seductora con notas de jazmín, cacao y sándalo.</p>
+                        <p class="product-price">$115.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('CAROLINA HERRERA Good Girl - $115.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="VERSACE.png" alt="VERSACE Eros" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">VERSACE Eros</h3>
+                        <p class="product-desc">Fragancia amaderada y aromática con notas de menta, manzana y vainilla.</p>
+                        <p class="product-price">$85.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('VERSACE Eros - $85.00')">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Venta al Detal -->
+    <section id="retail" class="section retail">
+        <div class="container">
+            <h2 class="section-title">Venta al Detal</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="CHANEL.png" alt="CHANEL Coco Mademoiselle" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">CHANEL Coco Mademoiselle</h3>
+                        <p class="product-desc">Fragancia moderna con notas de naranja, jazmín y rosa.</p>
+                        <p class="product-price">$125.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('CHANEL Coco Mademoiselle - $125.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="DIOR.png" alt="DIOR Sauvage" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">DIOR Sauvage</h3>
+                        <p class="product-desc">Fragancia masculina con notas de pimienta, bergamota y ambroxán.</p>
+                        <p class="product-price">$95.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('DIOR Sauvage - $95.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="CAROLINA HERRER.png" alt="CAROLINA HERRERA 212" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">CAROLINA HERRERA 212</h3>
+                        <p class="product-desc">Fragancia fresca con notas de bergamota, jazmín y sándalo.</p>
+                        <p class="product-price">$75.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('CAROLINA HERRERA 212 - $75.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="VERSACE.png" alt="VERSACE Bright Crystal" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">VERSACE Bright Crystal</h3>
+                        <p class="product-desc">Fragancia floral con notas de yuzu, granada y musk.</p>
+                        <p class="product-price">$65.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('VERSACE Bright Crystal - $65.00')">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Venta Mayorista -->
+    <section id="wholesale" class="section wholesale">
+        <div class="container">
+            <h2 class="section-title">Venta Mayorista</h2>
+            <p class="wholesale-info">
+                Ofrecemos precios competitivos para emprendedores y negocios que desean incorporar perfumes de lujo en su oferta. Trabajamos directamente con importadores para garantizar autenticidad y los mejores precios del mercado.
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Envíos Nacionales</h3>
+                    <p>Realizamos envíos a todo el país con seguimiento en tiempo real.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Descuentos por Volumen</h3>
+                    <p>Precios especiales según la cantidad de productos solicitados.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Productos 100% Originales</h3>
+                    <p>Garantizamos la autenticidad de todos nuestros productos.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Asesoría Personalizada</h3>
+                    <p>Te ayudamos a seleccionar las mejores opciones para tu negocio.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://wa.me/17864676442?text=Hola,%20estoy%20interesado%20en%20sus%20precios%20mayoristas" class="btn" target="_blank">Solicitar Catálogo Mayorista</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Productos Complementarios (Bolsos) -->
+    <section id="accessories" class="section accessories">
+        <div class="container">
+            <h2 class="section-title">Bolsos y Accesorios</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bolso de Cuero Negro" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bolso de Cuero Negro</h3>
+                        <p class="product-desc">Elegante bolso de cuero genuino con diseño minimalista y funcional.</p>
+                        <p class="product-price">$89.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('Bolso de Cuero Negro - $89.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bolso Tote Beige" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bolso Tote Beige</h3>
+                        <p class="product-desc">Bolso espacioso ideal para el día a día, en color beige clásico.</p>
+                        <p class="product-price">$75.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('Bolso Tote Beige - $75.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bolso Cruzado Marrón" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bolso Cruzado Marrón</h3>
+                        <p class="product-desc">Práctico bolso cruzado en cuero marrón, perfecto para uso diario.</p>
+                        <p class="product-price">$65.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('Bolso Cruzado Marrón - $65.00')">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bolso Elegante Negro" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bolso Elegante Negro</h3>
+                        <p class="product-desc">Bolso de diseño sofisticado para ocasiones especiales.</p>
+                        <p class="product-price">$120.00</p>
+                        <button class="product-btn" onclick="sendWhatsApp('Bolso Elegante Negro - $120.00')">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    En <strong>PRIVÉ PARFUMS</strong> nos especializamos en la importación directa de perfumes originales desde Estados Unidos. Nuestra misión es ofrecer fragancias de lujo auténticas a precios competitivos, tanto para clientes individuales como para emprendedores que desean iniciar o expandir su negocio en el mundo de la perfumería.
+                </p>
+                <p class="about-text">
+                    Trabajamos directamente con distribuidores autorizados para garantizar la autenticidad de cada producto. Nuestro equipo está comprometido con la excelencia en el servicio al cliente y la satisfacción total de quienes confían en nosotros.
+                </p>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <i class="fas fa-gem"></i>
+                        <h3>Calidad</h3>
+                        <p>Todos nuestros productos son 100% originales y de la más alta calidad.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Rapidez</h3>
+                        <p>Envíos rápidos y seguros a todo el país con seguimiento incluido.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Confianza</h3>
+                        <p>Años de experiencia nos respaldan como importadores confiables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Ubicación</h3>
+                            <p>Importadores directos desde Estados Unidos</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Teléfono</h3>
+                            <p>+1 (786) 467-6442</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@priveparfums.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+1 (786) 467-6442</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" class="form-input" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="Tu correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" class="form-input" placeholder="Asunto del mensaje" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" class="form-textarea" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2>Suscríbete a Nuestro Newsletter</h2>
+            <p>Recibe las últimas novedades, promociones exclusivas y lanzamientos de nuevos productos directamente en tu correo.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="newsletter-btn">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>PRIVÉ PARFUMS</h3>
+                <p>Importadores directos de perfumes originales desde Estados Unidos. Calidad, confianza y los mejores precios.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#brands">Marcas</a></li>
+                    <li><a href="#retail">Al Detal</a></li>
+                    <li><a href="#wholesale">Mayorista</a></li>
+                    <li><a href="#accessories">Bolsos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Información</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-phone"></i> +1 (786) 467-6442</li>
+                    <li><i class="fas fa-envelope"></i> info@priveparfums.com</li>
+                    <li><i class="fab fa-whatsapp"></i> +1 (786) 467-6442</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 PRIVÉ PARFUMS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filtro de marcas
+        function filterBrands(category) {
+            const brands = document.querySelectorAll('.brand-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Actualizar botones activos
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filtrar marcas
+            brands.forEach(brand => {
+                if (category === 'all' || brand.dataset.category === category) {
+                    brand.style.display = 'block';
+                } else {
+                    brand.style.display = 'none';
+                }
+            });
+        }
+
+        // Función para enviar mensaje de WhatsApp
+        function sendWhatsApp(product) {
+            const message = `Hola, estoy interesado en comprar: ${product}. ¿Podrían darme más información?`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/17864676442?text=${encodedMessage}`, '_blank');
+        }
+
+        // Smooth scroll para enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Manejo del formulario de contacto
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+            this.reset();
+        });
+
+        // Manejo del formulario de newsletter
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por suscribirte a nuestro newsletter!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
